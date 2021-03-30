@@ -1,0 +1,12 @@
+<?php
+
+return [
+
+    "sofan" => "صوفان",
+    "hellow" => "hellow ",
+    "welcome" => " وسهلا ",
+    "ABOUT" => "ABOUT",
+    "CONTACT" => "CONTACT",
+    "PORTFOLIO" => "PORTFOLIO ",
+    "START BOOTSTRAP" => "START BOOTSTRAP ",
+];
