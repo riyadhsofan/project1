@@ -1,6 +1,8 @@
 <?php
 
+use App\Post;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -89,3 +91,111 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+//
+
+// Route::get('/insert', function () {
+//     DB::insert(Eloquent'insert into posts(title,content) values(?,?)', ['php', 'laravel is the best in php']);
+// });
+
+
+
+// Route::get('/read', function () {
+
+//     $posts = Post::all();
+
+//     foreach ($posts as $post) {
+
+//         return $post->title;
+//     }
+// });
+
+// Route::get('/find', function () {
+
+//     $post = Post::find(1);
+
+//     return $post->title;
+// });
+
+
+
+Route::get('/findwhere', function () {
+
+    $posts = Post::where('id', 1)->orderBy('id', 'desc')->take(1)->get();
+
+    return $posts;
+});
+
+
+Route::get('/readall', function () {
+
+    $posts[] = Post::all();
+
+    foreach ($posts as $post) {
+
+        return $post;
+    }
+});
+
+// Route::get('/findmore',function(){
+
+// $posts=Post::where('users_count','<',1)->firstOrFail();
+
+
+//     });
+
+
+Route::get('/newinsert', function () {
+
+    $post = new Post;
+
+    // $post -> $title ='new title';
+    //$post ->$content ='new content';
+
+    $post->save();
+});
+
+Route::get('/delete', function () {
+
+    // $post= new Post::find(1);
+
+    // $post->delete();
+
+    //Post::where('id',2)->delete();
+
+    $posts = Post::find(17);
+
+
+
+    $posts->delete();
+});
+
+
+Route::get('/delete2', function () {
+
+    // $post= new Post::find(1);
+
+    // $post->delete();
+
+    //Post::where('id',2)->delete();
+
+    // $posts = destroy(18);
+
+});
+
+
+// Route::get('getoffer', 'CurdController@getOffers');
+// Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
+
+Route::group(['prefix' => 'offers'], function () {
+    //Route::get('store', 'CurdController@store');
+
+    Route::get('create', 'CurdController@create');
+    Route::post('store', 'CurdController@store')->name('offers.store');
+});
+// });
+// Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');

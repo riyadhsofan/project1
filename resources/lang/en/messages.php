@@ -9,5 +9,6 @@ return [
     "CONTACT" => "الاتصال",
     "PORTFOLIO" => "ملف ",
     "START BOOTSTRAP" => "بدء العمل",
+    "messages.offer name required" => "اسم العرض مطلوب",
 
 ];
